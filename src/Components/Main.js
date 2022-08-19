@@ -2,24 +2,32 @@ import React from 'react';
 import HornedBeast from './HornedBeast.js'
 
 
-class Main extends React.Component{
+class Main extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
-}
+  }
 
-  render(){
-    return(
+  render() {
+    return (
 
-<div className = "main">
+      <div className="main">
 
-<HornedBeast/>
+        <HornedBeast 
+          title = 'beast1'
+          img_url = ''
+          description = ''
+
+        />
+
+        <HornedBeast 
+          title = 'beast1'
+          img_url = ''
+          description = ''
+        />
 
 
-<HornedBeast/>
-
-
-</div>
+      </div>
     )
   }
 }
