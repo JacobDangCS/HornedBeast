@@ -1,11 +1,14 @@
 import React from 'react';
 import HornedBeast from './HornedBeast.js'
-
+import beastData from "../data.json"
 
 class Main extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      hbArray: beastData
+    };
   }
 
   render() {
@@ -13,25 +16,21 @@ class Main extends React.Component {
 
       <div className="main">
 
-        <HornedBeast 
-          title = 'beast1'
-          img_url = ''
-          description = ''
+        {this.state.hbArray.map(beast => {
+          return (
+            <HornedBeast
+              title={beast.title}
+              img_url={beast.image_url}
+              description={beast.description}
+            />
+          )
 
-        />
-
-        <HornedBeast 
-          title = 'beast1'
-          img_url = ''
-          description = ''
-        />
-
+        })}
 
       </div>
     )
   }
 }
 
-/*Add alt to images*/
 
 export default Main; 
