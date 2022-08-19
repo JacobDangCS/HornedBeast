@@ -19,9 +19,11 @@ class Main extends React.Component {
         {this.state.hbArray.map(beast => {
           return (
             <HornedBeast
+              key={beast._id}
               title={beast.title}
               img_url={beast.image_url}
               description={beast.description}
+              handleClick={ () => this.props.selectBeast(beast)}
             />
           )
 
@@ -31,6 +33,5 @@ class Main extends React.Component {
     )
   }
 }
-
 
 export default Main; 
