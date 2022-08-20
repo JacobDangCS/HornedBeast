@@ -10,28 +10,41 @@ class Main extends React.Component {
       hbArray: beastData
     };
   }
+}
 
-  render() {
-    return (
-
-      <div className="main">
-
-        {this.state.hbArray.map(beast => {
+render(){
+  return(
+    <div className="main">
+      {this.props.hornAmount == 'All' ? {
+        this.state.hbArray.map(beast => {
           return (
             <HornedBeast
               key={beast._id}
               title={beast.title}
               img_url={beast.image_url}
               description={beast.description}
-              handleClick={ () => this.props.selectBeast(beast)}
-            />
+              handleClick={() => this.props.selectBeast(beast)}
+              />
           )
-
-        })}
-
-      </div>
-    )
-  }
+        });
+      }}
+      :
+      {let filteredArr = hbArray.filter (beast => beast.horns == this.props.hornChoice)
+          filteredArr(beast => {
+            return(
+              <HornedBeast
+                key={beast._id}
+                title={beast.title}
+                img_url={beast.image_url}
+                description={beast.description}
+                handleClick={() => this.props.selectBeast}
+                />
+            )
+          })
+      }
+    </div>
+  );
 }
 
-export default Main; 
+
+export default Main;
