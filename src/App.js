@@ -13,6 +13,7 @@ class App extends React.Component {
     this.state = {
       chosenBeast: null,
       showModal: false,
+      hornAmount: 'All'
     }
   };
 
@@ -26,13 +27,23 @@ class App extends React.Component {
   openModal = () => { this.setState({ showModal: true }) }
   closeModal = () => { this.setState({ showModal: false }) }
 
+
+  hornChoice = (choice) => {
+    this.setState({
+      hornAmount: choice
+    })
+  }
+
+
   render() {
     return (
       <>
-        <Header />
+        <Header
+          hornChoice={this.hornChoice} />
 
         <Main
           selectBeast={this.selectBeast}
+          hornAmount={this.state.hornAmount}
         />
 
         <Footer />
@@ -45,7 +56,6 @@ class App extends React.Component {
             beastData={this.state.chosenBeast}
           />
         }
-
       </>
     );
   }
