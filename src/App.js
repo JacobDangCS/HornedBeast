@@ -5,6 +5,7 @@ import Footer from './Components/Footer.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import SelectedBeast from './Components/SelectedBeast.js'
+import beastData from "./data.json"
 
 class App extends React.Component {
 
@@ -13,7 +14,9 @@ class App extends React.Component {
     this.state = {
       chosenBeast: null,
       showModal: false,
-      hornAmount: 'All'
+      hornAmount: 'All',
+      hbArray: beastData,
+      filteredArr: {}
     }
   };
 
@@ -29,8 +32,10 @@ class App extends React.Component {
 
 
   hornChoice = (choice) => {
+    let filteredData = this.state.hbArray.filter(beast => choice == beast.horns)
     this.setState({
-      hornAmount: choice
+      hornAmount: choice,
+      filteredArr: filteredData
     })
   }
 
@@ -44,6 +49,8 @@ class App extends React.Component {
         <Main
           selectBeast={this.selectBeast}
           hornAmount={this.state.hornAmount}
+          hbArray={this.state.hbArray}
+          filteredArr={this.state.filteredArr}
         />
 
         <Footer />
